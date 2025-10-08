@@ -1,0 +1,93 @@
+<form class="flex flex-col gap-2" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+<!-- Email input -->
+<label class="input input-bordered flex items-center gap-2">
+  <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g
+      stroke-linejoin="round"
+      stroke-linecap="round"
+      stroke-width="2.5"
+      fill="none"
+      stroke="currentColor"
+    >
+      <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+    </g>
+  </svg>
+  <input type="email" class="grow" placeholder="email" formControlName="email" required />
+</label>
+
+<!-- Password -->
+<label class="input validator">
+  <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g
+      stroke-linejoin="round"
+      stroke-linecap="round"
+      stroke-width="2.5"
+      fill="none"
+      stroke="currentColor"
+    >
+      <path
+        d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"
+      ></path>
+      <circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle>
+    </g>
+  </svg>
+  <input
+    type="password"
+    required
+    placeholder="Contraseña"
+    minlength="6"
+    class="grow"
+    formControlName="password"
+    title="Debe tener más de 6 caracteres, incluyendo números, minúsculas y mayúsculas"
+  />
+</label>
+
+
+<!-- FullName -->
+<label class="input validator">
+  <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g
+      stroke-linejoin="round"
+      stroke-linecap="round"
+      stroke-width="2.5"
+      fill="none"
+      stroke="currentColor"
+    >
+      <path
+        d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"
+      ></path>
+      <circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle>
+    </g>
+  </svg>
+  <input
+    type="text"
+    required
+    placeholder="Nombre de usuario"
+    minlength="6"
+    class="grow"
+    formControlName="fullName"
+    title="Debe tener más de 6 caracteres"
+  />
+</label>
+
+<button class="btn btn-primary w-full" type="submit">Enviar</button>
+
+@if(hasError()) {
+  <div role="alert" class="alert alert-warning animate-fadeIn">
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+  </svg>
+  <span>Por favor revise la información</span>
+</div>
+}
+
+
+<!-- <p>
+  ¿No tienes cuenta?
+  <a routerLink="/auth/register" class="text-secondary">Crea una aquí</a>
+</p> -->
+
+</form>
+
