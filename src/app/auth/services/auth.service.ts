@@ -91,7 +91,6 @@ export class AuthService {
   }
 
   private handleAuthSuccess({token, user}:AuthResponse) {
-    console.log('handleAuthSuccess', {token, user});
     this._user.set(user);
     this._authStatus.set('authenticated');
     this._token.set(token);

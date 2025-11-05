@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, input, viewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, input, OnChanges, SimpleChanges, viewChild } from '@angular/core';
 // import Swiper JS
 import Swiper from 'swiper';
 // import Swiper styles
@@ -21,17 +21,32 @@ import { ProductImagePipe } from "../../pipes/product-image.pipe";
 
   `
 })
-export class ProductCarouselComponent implements AfterViewInit {
+export class ProductCarouselComponent implements AfterViewInit, OnChanges {
   images = input.required<string[]>();
   swiperDiv = viewChild.required<ElementRef>('swiperDiv');
 
+  swiper: Swiper | undefined = undefined;
+
+  ngOnChanges(changes: SimpleChanges): void {
+    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+    if (changes['images'].firstChange) return;
+    if(!this.swiper) return;
+    this.swiper.destroy(true, true);// TODO Limpia toda la instancia y estilos
+    this.swiperInit();
+
+  }
+
   ngAfterViewInit(): void {
-    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
-    //Add 'implements AfterViewInit' to the class.
+     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    this.swiperInit();
+  }
+
+
+  swiperInit(){
     const element = this.swiperDiv().nativeElement;
     if(!element) return;
 
-    const swiper = new Swiper(element, {
+    this.swiper = new Swiper(element, {
       // Optional parameters
       direction: 'horizontal',
       loop: true,
