@@ -1,3 +1,3 @@
 export const environment = {
-  baseUrl: 'https://nest-teslo-shop-cfs.netlify.app/api',
+  baseUrl: 'occasional-britte-medianostrum-c3f34624.koyeb.app/api',
 };
